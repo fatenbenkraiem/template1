@@ -1,0 +1,15 @@
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+        <h1 class="logo"><a href="#"></a></h1>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a [routerLink]="['/EEF']" (click)="gotoTop()" class="nav-link scrollto">Examen d'équivalence français</a></li>
+                <li><a [routerLink]="['/EVC']" (click)="gotoTop()" class="nav-link scrollto">Préparations aux EVC</a></li>
+                <li><a [routerLink]="['/SM']" (click)="gotoTop()" class="nav-link scrollto">Specialitées medicales</a></li>
+                <li><a [routerLink]="['/CF']" (click)="gotoTop()" class="nav-link scrollto">Contenue de la formation</a></li>
+                <li><a [routerLink]="['/CONTACT']" (click)="gotoTop()" class="nav-link scrollto">Contact</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+    </div>
+</header>

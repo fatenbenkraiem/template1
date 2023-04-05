@@ -1,0 +1,138 @@
+<app-adminheader></app-adminheader>
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <app-adminsidebar></app-adminsidebar>
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Ressources</h1>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col col-lg-12">
+                                <div class="row">
+                                    <div class="col col-lg-6">
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                Actualitées
+                                            </div>
+                                            <div class="card-body">
+                                                <table class="dataTable-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Name</th>
+                                                            <th>Description</th>
+                                                            <th>Image</th>
+                                                            <th>Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr 
+                                                            *ngFor="let actualite of actualitesRes"
+                                                        >
+                                                            <td>{{ actualite.name }}</td>
+                                                            <td>
+                                                                <p>
+                                                                    {{ actualite.description }}
+                                                                </p>
+                                                            </td>
+                                                            <td>
+                                                                <img src="assets/formation/{{actualite.image}}"
+                                                                    style="width: 50px; height: 50px;" />
+                                                            </td>
+                                                            <td>
+                                                                <button 
+                                                                    class="btn btn-sm btn-default waves-effect"
+                                                                    (click)="editActualite(actualite)">
+                                                                    <i class="fas fa-pen" ></i>
+                                                                </button>
+                                                                <button 
+                                                                    class="btn btn-sm btn-danger waves-effect"
+                                                                    (click)="deleteActualite(actualite)">
+                                                                    <i class="fas fa-trash" ></i>
+                                                                </button>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr *ngIf="totalActualites == 0">
+                                                            <td colspan="3">
+                                                                <p>
+                                                                    Aucune actulité publié!
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-lg-6">
+                                        <div class="card mb-4">
+                                            <div class="card-header">
+                                                Ajouter actualité
+                                            </div>
+                                            <div class="card-body">
+                                                <form (ngSubmit)="createActualite() ;UploadFile()" method="POST">
+                                                    <div class="card card-default">
+
+                                                        <div class="card-body">
+
+                                                            <div class="row">
+                                                                <div class="form-group col-lg-12">
+                                                                    <label>Titre</label>
+                                                                    <input type="text" name="titre"
+                                                                        [(ngModel)]="actualiteRes.name"
+                                                                        class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-lg-12">
+                                                                    <label>Description</label>
+                                                                    <textarea name="description"
+                                                                        [(ngModel)]="actualiteRes.description"
+                                                                        class="form-control">
+                                                                        </textarea>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="row">
+                                                          
+                                                                      <div class="inputfiles">
+                                                                        <label>Image</label>
+                                                                        <input type="file" name="images" (change)="  dispaly($event)" 
+                                                                        accept="image/*"    [(ngModel)]="actualiteRes.image "
+                                                                        />
+                                                                      </div>
+                                                                      <img [src]="imgURL" height="200" *ngIf="imgURL">
+                                                                </div>
+                                                                    
+                                                        </div>
+                                                        <div class="card-footer">
+                                                            <div class="row float-right">
+                                                                <div class="col">
+                                                                    <button type="reset"
+                                                                        class="btn btn-primary  btn-sm m-3">Cancel</button>
+                                                                    <button   type="submit" class="btn btn-success btn-sm" >Save</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+</div>

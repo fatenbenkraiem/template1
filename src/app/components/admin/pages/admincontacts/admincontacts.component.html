@@ -1,0 +1,119 @@
+<app-adminheader></app-adminheader>
+
+<div id="layoutSidenav">
+    <div id="layoutSidenav_nav">
+        <app-adminsidebar></app-adminsidebar>
+    </div>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <h1 class="mt-4">Demandeurs</h1>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Liste des demandeurs
+                    </div>
+                    <div class="row" *ngIf="addFormVisible">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                
+                            </div>
+                            <div class="card-body">
+    
+                                <form (ngSubmit)="updatedemandeur()" method="POST">
+                                    <div class="card card-default">
+    
+                                        <div class="card-body">
+    
+                                            <div class="row">
+                                                <div class="form-group col-lg-6">
+                                                    <label>nom</label>
+                                                    <input type="text" name="nom" [(ngModel)]="Demandeur.nom"
+                                                        class="form-control" />
+                                                </div>
+                                               
+                                                <div class="form-group col-lg-6">
+                                                    <label>Télephone</label>
+                                                    <input type="text" name="specialite" [(ngModel)]="Demandeur.tel"
+                                                        class="form-control" />
+                                                </div>
+                                                <div class="form-group col-lg-6">
+                                                    <label>Role</label>
+                                                    <input type="text" name="titre" [(ngModel)]="Demandeur.role"
+                                                        class="form-control" />
+                                                </div>
+                                               
+                                            </div>
+                                         
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="row float-right">
+                                                <div class="col">
+                                                    <button type="reset" class="btn btn-primary  btn-sm m-3"
+                                                        data-dismiss="modal"
+                                                        (click)="hideAddForm()">Annuler</button>
+                                                    <button type="submit" class="btn btn-success btn-sm"
+                                                        data-dismiss="modal">Enregistrer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+    
+    
+    
+    
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <table class="dataTable-table">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>role</th>
+                                    <th>tel</th>
+                                    
+                                    <th>Actions</th>
+                                  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let demandeur of  Demandeurs">
+                                    <td>{{demandeur.nom }}</td>
+                                    <td>{{demandeur.role}}</td>
+                                    <td>{{demandeur.tel }} </td>
+                                    <td>
+                                        <div class="action">
+                                        <button 
+                                            class="btn btn-sm btn-warning waves-effect"
+                                            (click)="editdemandeur(demandeur)">
+                                         Modifier
+                                        </button>
+                                        <button 
+                                            class="btn btn-sm btn-danger waves-effect"
+                                            (click)=" deletedemandeur(demandeur)">
+                                           Delete
+                                        </button>
+                                    </div>
+                                    </td>
+                                   
+                                </tr>
+                                <tr *ngIf="totalDemandeurs == 0">
+                                    <td colspan="3">
+                                        <p>
+                                            Aucune demandeur!
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+    </div>
+</div>
